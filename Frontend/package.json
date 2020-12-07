@@ -1,0 +1,36 @@
+{
+  "name": "nextjs-graphql-prisma-starter-frontend",
+  "version": "1.0.0",
+  "description": "Frontend project for the nextjs graphql prisma starter application",
+  "author": {
+    "name": "Temiloluwa Philip Ojo",
+    "email": "codekagei@gmail.com",
+    "url": "https://github.com/themmyloluwaa/"
+  },
+  "scripts": {
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.2.5",
+    "bootstrap": "^4.5.3",
+    "deepmerge": "^4.2.2",
+    "graphql": "^15.4.0",
+    "next": "latest",
+    "next-cookies": "^2.0.3",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "subscriptions-transport-ws": "^0.9.18"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
+}

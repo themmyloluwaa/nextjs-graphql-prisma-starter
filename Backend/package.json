@@ -1,0 +1,43 @@
+{
+  "name": "nextjs-graphql-prisma-starter-backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Temiloluwa Philip Ojo",
+    "email": "codekagei@gmail.com",
+    "url": "https://github.com/themmyloluwaa/"
+  },
+  "description": "Backend project for the nextjs graphql prisma starter application",
+  "dependencies": {
+    "@nexus/schema": "^0.19.0",
+    "@prisma/client": "^2.11.0",
+    "@vonage/server-sdk": "^2.10.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "graphql": "^14.0.0",
+    "graphql-shield": "^7.4.0",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "nexus-plugin-prisma": "^0.25.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.11.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "dev": "nodemon script.js",
+    "start": "node script.js --port $PORT",
+    "postinstall": "npm -s run generate",
+    "generate": "prisma generate"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
