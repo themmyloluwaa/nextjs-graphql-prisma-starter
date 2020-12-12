@@ -16,4 +16,6 @@ Bootstrap is added to the nextjs application to help with styling the applicatio
 
 This readme would be updated as more project needs arise.
 
+## The frontend folder also contains some default mutation, query and subscription queries, feel free to clean up this project according to your taste.
+
 ## Happy coding!! From your favorite code hokagei - <CodeKagei>.

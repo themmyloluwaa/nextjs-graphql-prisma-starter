@@ -11,19 +11,19 @@ export const APOLLO_STATE_PROP_NAME = "__APOLLO_STATE__";
 let apolloClient;
 let token = `Bearer ${getToken()}`;
 
-function httpLink() {
-  return new HttpLink({
-    // Server URL (must be absolute)
-    uri: "http://localhost:5000/api",
-    // Additional fetch() options like `credentials` or `headers`
-    credentials: "same-origin",
-    headers: {
-      Authorization: token,
-    },
-  });
-}
-function wsLink() {
-  return new WebSocketLink({
+const httpLink = new HttpLink({
+  // Server URL (must be absolute)
+  uri: "http://localhost:5000/api",
+  // Additional fetch() options like `credentials` or `headers`
+  credentials: "include",
+  headers: {
+    Authorization: token,
+  },
+});
+
+const wsLink =
+  process.browser &&
+  new WebSocketLink({
     uri: `ws://localhost:5000/subscriptions`,
     options: {
       reconnect: true,
@@ -32,26 +32,24 @@ function wsLink() {
       },
     },
   });
-}
 
-function link() {
-  split(
-    ({ query }) => {
-      const definition = getMainDefinition(query);
-      return (
-        definition.kind === "OperationDefinition" &&
-        definition.operation === "subscription"
-      );
-    },
-    wsLink,
-    httpLink
-  );
-}
+const link = process.browser
+  ? split(
+      //only create the split in the browser
+      // split based on operation type
+      ({ query }) => {
+        const { kind, operation } = getMainDefinition(query);
+        return kind === "OperationDefinition" && operation === "subscription";
+      },
+      wsLink,
+      httpLink
+    )
+  : httpLink;
 
 function createApolloClient() {
   return new ApolloClient({
-    ssrMode: typeof window === "undefined",
     link,
+    ssrMode: typeof window === "undefined",
     cache: new InMemoryCache({}),
   });
 }

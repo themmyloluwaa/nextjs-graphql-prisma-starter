@@ -1,23 +1,26 @@
 import cookies from "next-cookies";
 
-const getToken = (ctx = null) => {
+const getToken = (ctx = {}) => {
   const isSSR = typeof window === "undefined";
   let token = "";
   if (isSSR) {
-    token = cookies(ctx).token || "";
+    token = cookies(ctx)?.token ?? "";
   } else {
-    token = localStorage.getItem("token");
+    token = localStorage.getItem("token") ?? "";
   }
 
   return token;
 };
 
-const setToken = (token = "") => {
-  if (token.length === 0) {
+const setToken = (data = {}) => {
+  if (!data) {
     return;
   }
-  document.cookie = `token=${token}; path=/`;
-  localStorage.setItem("token", token);
+
+  document.cookie = `token=${data.token}; path=/`;
+  document.cookie = `user=${JSON.stringify(data.user)}; path=/`;
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("user", JSON.stringify(data.user));
 };
 
 export { setToken, getToken };

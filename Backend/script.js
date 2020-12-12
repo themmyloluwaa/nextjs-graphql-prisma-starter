@@ -32,7 +32,7 @@ const options = {
   playground: "/playground",
   cors: {
     credentials: true,
-    origin: process.env.ORIGIN,
+    origin: process.env.FRONTEND_ORIGIN,
   },
 };
 
@@ -60,7 +60,7 @@ const server = new GraphQLServer({
     //   user id from the token in the http header else remove it
     //   you must have a getUserId method imported before using this.
 
-    // const userId = getUserId(sConfig);
+    // const userId = await getUserId(sConfig);
     // const user = await prisma.user.findOne({ where: { id: Number(userId) } });
     // if (user) {
     //   data.user = user;
